@@ -2,8 +2,12 @@ var express = require('express');
 var routerMutants = express.Router();
 
 routerMutants.post('/mutant', function(req, res, next){
-    var mutant = isMutant(req.body.dna);
-    res.json({success: mutant});
+    var mutantSuccess = isMutant(req.body.dna);
+    if(mutantSuccess)
+        res.status(200);
+    else
+        res.status(403);
+    res.json({success: mutantSuccess});
 });
 
 function isMutant(dna){
@@ -20,11 +24,7 @@ function isMutant(dna){
     //1 : Vertically
     //2 : Diagonal
 
-    let countHorizontally = checkData(elements, 4, 0);
-    let countVertically = checkData(elements, 4, 1);
-    let countDiagonal = checkData(elements, 4, 2);
-
-    let total = countHorizontally + countVertically + countDiagonal;
+    let total = checkData(elements, 4, 0) + checkData(elements, 4, 1) + checkData(elements, 4, 2);
     
     return total > 1 ? true : false;
 }
@@ -80,9 +80,9 @@ function getCol(matrix, col){
     return column;
  }
 
- function getDiagonal(array, lengthDiagonal, bottomToTop ) {
-    let Ylength = array.length;
-    let Xlength = array[0].length;
+ function getDiagonal(matrix, minLength, bottomToTop ) {
+    let Ylength = matrix.length;
+    let Xlength = matrix[0].length;
     let maxLength = Math.max(Xlength, Ylength);
     let diagonalRow;
     let diagonalArray = [];
@@ -91,10 +91,10 @@ function getCol(matrix, col){
         for (let y = Ylength - 1; y >= 0; --y) {
             let x = k - (bottomToTop ? Ylength - y : y);
             if (x >= 0 && x < Xlength) {
-                diagonalRow.push(array[y][x]);
+                diagonalRow.push(matrix[y][x]);
             }
         }
-        if(diagonalRow.length >= lengthDiagonal) {
+        if(diagonalRow.length >= minLength) {
             diagonalArray.push(diagonalRow);
         }
     }
