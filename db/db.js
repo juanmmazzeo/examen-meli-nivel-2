@@ -1,6 +1,6 @@
 import sequelize from 'sequelize';
 
-var connection = new sequelize('picandeat_api', 'root', 'admin', {
+var connection = new sequelize('examenml', 'root', 'admin', {
   host: 'localhost',
   dialect: 'mysql',
 
@@ -13,15 +13,14 @@ var connection = new sequelize('picandeat_api', 'root', 'admin', {
   timezone: '-03:00'
 });
 
-function connectToDb(){
-  connection
-    .authenticate()
-    .then(function(err){
-      console.log('Successfully connected to database.');
-    })
-    .catch(function(err){
-      console.log('Cannot conect to database: ', err);
-    });
-}
+
+connection
+  .authenticate()
+  .then(function(err){
+    console.log('Successfully connected to database.');
+  })
+  .catch(function(err){
+    console.log('Cannot conect to database: ', err);
+  });
 
 export default connection;
