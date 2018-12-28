@@ -1,19 +1,55 @@
 var express = require('express');
 var routerMutants = express.Router();
+import dna from '../models/dna';
 
 routerMutants.post('/mutant', function(req, res, next){
-    var mutantSuccess = isMutant(req.body.dna);
-    if(mutantSuccess)
-        res.status(200);
-    else
-        res.status(403);
-    res.json({success: mutantSuccess});
+    let dnaReq = req.body.dna;
+
+    if(!checkValid(dnaReq)){
+        return res.json({
+            success: false, 
+            error: 'The dna sequence can only be composed of A,T,C and G.'
+        });
+    }
+
+    var mutantSuccess = isMutant(dnaReq);
+    try {
+        dna.create({
+            sequence: dnaReq.join(),
+            success: mutantSuccess
+        }).then(function(dnaCreated){
+            if(mutantSuccess)
+                res.status(200);
+            else
+                res.status(403);
+
+            res.json({success: mutantSuccess});
+        }).error(e => console.log(e));
+    } catch (error) {
+        res.status(500);
+    };
+});
+
+routerMutants.get('/stats', function(req, res, next){
+    dna.count({
+        where: {success: true}
+    }).then(function(mutantsCount){
+        dna.count().then(function(all){
+            let humanCount = Number(all) - Number(mutantsCount);
+            res.json({
+                count_mutant_dna: mutantsCount, 
+                count_human_dna: humanCount,
+                ratio: (Number(mutantsCount)/humanCount).toFixed(1)
+            })
+
+        });
+    }).catch(error => {
+        console.log('Error: ${error}')
+        res.status(500);
+    });
 });
 
 function isMutant(dna){
-    if(!checkValid(dna))
-        return false;
-
     let elements = [];
     dna.forEach(r => {
         elements.push(Array.from(r));
