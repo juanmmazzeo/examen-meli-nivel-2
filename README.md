@@ -9,9 +9,9 @@
 
 #### /mutant/
 ##### Make a HTTP POST to [host]:5000/api/mutant
-**Data to send:**
-body (raw/JSON) example:
+**Data to send (example)**:
 
+body (raw/JSON):
 {
 	"dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
 }
