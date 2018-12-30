@@ -1,7 +1,7 @@
 import sequelize from 'sequelize';
-import connection from '../db/db';
+import db from '../db/db';
 
-var dna = connection.define('dna', {
+var dna = db.connection.define('dna', {
     Id: {
         type: sequelize.INTEGER(11),
         primaryKey: true,

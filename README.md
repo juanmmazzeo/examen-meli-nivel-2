@@ -3,7 +3,9 @@
 ### Instructions to run
 #### 1. Download or clone
 #### 2. Run in console: npm install --save
-#### 3. Run in console: npm run start
+#### 3.1 Run in console: npm run start
+#### 3.2 Run tests: npm run test
+
 
 ### HTTPs request
 
@@ -25,3 +27,4 @@ body (raw/JSON):
     "count_human_dna": 7,
     "ratio": "1.7"
 }
+

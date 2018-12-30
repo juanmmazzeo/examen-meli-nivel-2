@@ -36,9 +36,8 @@ routerMutants.post('/mutant', function(req, res, next){
                 res.status(403);
 
             res.json({dnaSaved: dnaCreated});
-        }).error(e => console.log(e));
+        })
     } catch (error) {
-        console.log('Error: ${error}')
         res.status(500);
     };
 });
@@ -59,7 +58,6 @@ routerMutants.get('/stats', function(req, res, next){
 
         });
     }).catch(error => {
-        console.log('Error: ${error}')
         res.status(500);
     });
 });

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./test/**/*.js",
+    "test": "nyc mocha --exit --compilers js:babel-core/register ./test/**/*.js",
     "start": "nodemon app.js --exec babel-node --"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/wolfeidau/npmtest.git"
+    "url": "git://github.com/juanmmazzeo/examen-meli-nivel-2.git"
   },
   "author": "Juan Manuel Mazzeo",
   "license": "ISC",
@@ -20,10 +20,25 @@
     "sequelize": "^4.41.2"
   },
   "devDependencies": {
+    "babel-plugin-istanbul": "^5.1.0",
     "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "mocha": "^5.2.0",
     "nock": "^10.0.5",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.7",
+    "nyc": "^13.1.0"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
   },
   "description": "Examen Mercado Libre"
 }
