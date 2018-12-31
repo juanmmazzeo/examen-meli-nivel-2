@@ -22,9 +22,9 @@ body (raw/JSON):
 
 {
     "dnaSaved": {
-        "Id": 323,
-        "sequence": "ATGCGA,CAGTGC,ATATTT,AGATGG,CCGCCA,TCACTG",
-        "success": false
+        "Id": 1,
+        "sequence": "ATGCGA,CAGTGC,CAGTGC,AGAAGG,CCCCTA,TCACTG",
+        "success": true
     }
 }
 
