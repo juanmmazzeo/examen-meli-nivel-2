@@ -15,18 +15,18 @@
 
 body (raw/JSON):
 {
-    {
-        "dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
-    }
+    "dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
 }
 
 **Data to receive (example):**
-
-"dnaSaved": {
+{
+    "dnaSaved": {
         "Id": 323,
         "sequence": "ATGCGA,CAGTGC,ATATTT,AGATGG,CCGCCA,TCACTG",
         "success": false
+    }
 }
+
 
 #### /stats/
 ##### Make a HTTP GET to [host]:5000/api/stats
