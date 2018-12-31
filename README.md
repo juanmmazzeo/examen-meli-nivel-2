@@ -10,7 +10,7 @@
 ### HTTPs request
 
 #### /mutant/
-##### Make a HTTP POST to [host]:5000/api/mutant
+##### Make a HTTP POST to localhost:5000/api/mutant (default)
 **Data to send (example)**:
 
 body (raw/JSON):
@@ -30,7 +30,7 @@ body (raw/JSON):
 
 
 #### /stats/
-##### Make a HTTP GET to [host]:5000/api/stats
+##### Make a HTTP GET to localhost:5000/api/stats (default)
 **Data to receive (example):**
 
 {
