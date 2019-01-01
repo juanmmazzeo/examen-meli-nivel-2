@@ -1,10 +1,11 @@
-## Examen meli Level 2 and 3
+# Examen meli Level 2 and 3
 
 ### Instructions to run
 #### 1. Download or clone
 #### 2. Run in console: npm install --save
-#### 3.1 Run in console: npm run start
-#### 3.2 Run tests: npm run test
+#### 3. Configure Database (read the instructions below)
+#### 4.1 Run in console: npm run start
+#### 4.2 Run tests: npm run test
 
 
 ### HTTPs request
@@ -39,3 +40,7 @@ body (raw/JSON):
     "ratio": "1.7"
 }
 
+
+### Configure Database
+#### 1.Run script located at extra/script.sql
+#### 2.Change data connection in 'connection' variable in db/db.js
